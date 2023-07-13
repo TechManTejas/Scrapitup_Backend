@@ -13,6 +13,12 @@ class UserModelViewSet(viewsets.ModelViewSet):
     authentication_classes = []
     permission_classes = [AllowAny]
 
+    def create(self, validated_data):
+        user = User.objects.create_user(**validated_data)
+        Token.objects.create(user=user)
+        token = Token.objects.create(user=user)
+        return {'user': user, 'token': token.key}
+
 
 class CustomObtainAuthToken(ObtainAuthToken):
     def post(self, request, *args, **kwargs):

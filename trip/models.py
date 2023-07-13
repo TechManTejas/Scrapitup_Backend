@@ -10,7 +10,7 @@ class Trip(models.Model):
     address = models.ForeignKey(CustomerAddress, on_delete=models.CASCADE)
     initiate_datetime = models.DateTimeField(auto_now_add=True)
     completion_datetime = models.DateTimeField(blank=True, null=True)
-    current_status = models.CharField(max_length=100)
+    current_status = models.CharField(max_length=100, default="Request Generated")
     rating = models.DecimalField(max_digits=3, decimal_places=2, blank=True, null=True)
 
     def __str__(self):
