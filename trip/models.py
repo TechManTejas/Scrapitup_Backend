@@ -12,6 +12,10 @@ class Trip(models.Model):
     completion_datetime = models.DateTimeField(blank=True, null=True)
     current_status = models.CharField(max_length=100, default="Request Generated")
     rating = models.DecimalField(max_digits=3, decimal_places=2, blank=True, null=True)
+    # Readonly
+    scrap_photo = models.ImageField(upload_to='scrap_payment_photos/', blank=True, null=True)
+    scrap_partner_amount = models.DecimalField(max_digits=9, decimal_places=2, blank=True, null=True)
+    customer_received_amount = models.DecimalField(max_digits=9, decimal_places=2, blank=True, null=True)
 
     def __str__(self):
         return f"Trip {self.id} - Customer: {self.customer.user.username} - Scrap Partner: {self.scrap_partner.user.username}"

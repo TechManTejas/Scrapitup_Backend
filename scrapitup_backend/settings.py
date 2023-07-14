@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'customer',
     'rates',
-    'scrap',
     'trip',
     'user',
     'vendor'
